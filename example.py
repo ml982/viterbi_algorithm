@@ -1,4 +1,6 @@
 from viterbi_algorithm.algorithm import Viterbi
+# Example usage of the Viterbi algorithm in speech tagging
+
 
 # Example sentence
 sentence = "the cat ate a fish"
@@ -52,6 +54,8 @@ emiss_matrix = [
 start_probs = {'NOUN': 0.2, 'VERB': 0.0, 'DET': 0.8}
 start_matrix = [0.2, 0, 0.8]
 
+
+# Run the Viterbi algorithm
 best_path = Viterbi(words, states,
                     start_probs, transition_probs, emission_probs)[0]
 print(best_path)  # Output: ['DET', 'NOUN', 'VERB', 'DET', 'NOUN']

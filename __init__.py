@@ -1,2 +1,2 @@
-from .pos_ariticial import viterbi # noqa F401
-from .speech_tagging import Viterbi # noqa F401
+from .example import viterbi # noqa F401
+from .algorithm import Viterbi # noqa F401

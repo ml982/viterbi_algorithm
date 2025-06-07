@@ -3,6 +3,8 @@ from collections import defaultdict, Counter
 from sklearn.model_selection import train_test_split
 from viterbi_algorithm.algorithm import Viterbi
 
+# Viterbi algorithm for speech tagging using real-world data
+
 
 # emission probability
 def get_emission_prob(train_data):
