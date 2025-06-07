@@ -156,4 +156,4 @@ plt.plot(train_data_size, accuracies, marker='o')
 plt.xlabel('Training Data Size')
 plt.ylabel('Accuracy')
 plt.title('Viterbi Algorithm Accuracy vs Training Data Size')
-plt.show()
+plt.show()  # tidy up the plot
