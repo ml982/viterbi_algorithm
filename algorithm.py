@@ -76,7 +76,7 @@ def Viterbi(obs, states, start_prob, trans_prob, emiss_prob):
     for s in range(N):
         state = states[s]
         viterbi[s, 0] = start_prob[state] * \
-            emiss_prob[state].get(obs[0], 1e-10)  # for unknown data
+            emiss_prob.get(state, {}).get(obs[0], 1e-10)  # for unknown data
         backpointer[s, 0] = 0
 
     # Recursion
@@ -88,8 +88,8 @@ def Viterbi(obs, states, start_prob, trans_prob, emiss_prob):
             for s_prev in range(N):
                 prev_state = states[s_prev]
                 prob = viterbi[s_prev, t-1] * \
-                    trans_prob[prev_state].get(current_state, 1e-10) * \
-                    emiss_prob[current_state].get(obs[t], 1e-10)
+                    trans_prob.get(prev_state, {}).get(current_state, 1e-10) * \
+                    emiss_prob.get(current_state, {}).get(obs[t], 1e-10)
                 if prob > max_prob:
                     max_prob = prob
                     best_prev = s_prev
