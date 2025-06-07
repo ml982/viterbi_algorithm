@@ -5,13 +5,13 @@ def viterbi(obs, states, start_prob, trans_prob, emiss_prob):
     """
     Viterbi algorithm for finding the most probable sequence of states
     given a sequence of observations.
-
+    
     Parameters:
     obs: list of observations (indices)
     states: list of possible states (indices)
     start_prob: list of initial probabilities for each state
     trans_prob: 2D list of transition probabilities between states
-    emiss_prob: 2D list of emission probabilities for each
+    emiss_prob: 2D list of emission probabilities for each state
     state and observation
     """
     # intialize the Viterbi matrix and backpointer
@@ -66,7 +66,7 @@ def Viterbi(obs, states, start_prob, trans_prob, emiss_prob):
     """
     # change states to indices
     state_to_idx = {state: i for i, state in enumerate(states)}
-
+    
     # Initialize the Viterbi matrix and backpointer
     N, T = len(states), len(obs)
     viterbi = np.zeros((N, T))
@@ -75,8 +75,8 @@ def Viterbi(obs, states, start_prob, trans_prob, emiss_prob):
     # Initialisation
     for s in range(N):
         state = states[s]
-        viterbi[s, 0] = start_prob[state] * \
-            emiss_prob[state].get(obs[0], 1e-10)  # for unknown data
+        viterbi[s, 0] = start_prob.get(state, 1e-10) * \
+            emiss_prob.get(state, {}).get(obs[0], 1e-10)  # for unknown data
         backpointer[s, 0] = 0
 
     # Recursion
