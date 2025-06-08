@@ -76,7 +76,7 @@ def Viterbi(obs, states, start_prob, trans_prob, emiss_prob):
     for s in range(N):
         state = states[s]
         viterbi[s, 0] = start_prob.get(state, 1e-10) * \
-            emiss_prob.get(state, {}).get(obs[0], 1e-10)  # for unknown data
+            emiss_prob[state].get(obs[0], 1e-10)  # for unknown data
         backpointer[s, 0] = 0
 
     # Recursion
