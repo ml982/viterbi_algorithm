@@ -135,8 +135,8 @@ accuracy1 = compute_accuracy_over_test(test_data1, states1, initial1, trans1,
                                        emiss1)  # accuracy = 88.75%
 
 # Expand for more sizes of test data
-test_sizes = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55,
-              0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
+test_sizes = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5,
+              0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
 train_data_size = []
 accuracies = []
 for size in test_sizes:
@@ -155,5 +155,6 @@ for size in test_sizes:
 plt.plot(train_data_size, accuracies, marker='o')
 plt.xlabel('Training Data Size')
 plt.ylabel('Accuracy')
+plt.axis((0, 1, 0.78, 0.9))
 plt.title('Viterbi Algorithm Accuracy vs Training Data Size')
-plt.show()  # tidy up the plot
+plt.show()
