@@ -1,4 +1,6 @@
 import numpy as np
+# Using pseudo code from P381 in Jurafsky and Martin (2025) to implement the
+# algorithm
 
 
 def viterbi(obs, states, start_prob, trans_prob, emiss_prob):

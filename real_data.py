@@ -153,6 +153,7 @@ for size in test_sizes:
     accuracies.append(accuracy)
     print(f"Training data size: {1 - size}, Accuracy: {accuracy:.2%}")
 
+# Plotting the results
 plt.plot(train_data_size, accuracies, marker='o')
 plt.xlabel('Training Data Size')
 plt.ylabel('Accuracy')
