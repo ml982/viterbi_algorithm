@@ -2,6 +2,7 @@ import nltk
 from collections import defaultdict, Counter
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import numpy as np
 from viterbi_algorithm.algorithm import Viterbi
 
 # Viterbi algorithm for speech tagging using real-world data
@@ -156,5 +157,8 @@ plt.plot(train_data_size, accuracies, marker='o')
 plt.xlabel('Training Data Size')
 plt.ylabel('Accuracy')
 plt.axis((0, 1, 0.78, 0.9))
+plt.xticks(np.arange(0, 1.1, 0.1))
+plt.yticks(np.arange(0.78, 0.91, 0.01))
 plt.title('HMM Accuracy using Viterbi Algorithm vs Training Data Size')
+plt.grid()
 plt.show()
