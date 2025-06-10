@@ -105,17 +105,17 @@ def compute_accuracy_over_test(test_data, states, start_probs, trans_probs,
     """
     total_correct = 0
     total_tags = 0
-
     for sent in test_data:
         words = [word for word, _ in sent]
         obs = [w.lower() for w in words]
-        gold_tags = [tag for _, tag in sent]
+        true_tags = [tag for _, tag in sent]
 
         predicted_tags = Viterbi(obs, states, start_probs, trans_probs,
                                  emiss_probs)[0]
-        # Compare predicted to gold
-        for pred, gold in zip(predicted_tags, gold_tags):
-            if pred == gold:
+
+        # Compare predicted to true
+        for pred, true in zip(predicted_tags, true_tags):
+            if pred == true:
                 total_correct += 1
             total_tags += 1
 
@@ -140,9 +140,11 @@ test_sizes = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5,
               0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
 train_data_size = []
 accuracies = []
+
 for size in test_sizes:
     train_data, test_data = train_test_split(tagged_sents,
                                              test_size=size, random_state=42)
+    print(len(train_data), len(test_data))
     train_data_size.append(1 - size)
     emiss_prob = get_emission_prob(train_data)
     trans_prob = get_transition_prob(train_data)
