@@ -82,12 +82,12 @@ def Viterbi(obs, states, start_prob, trans_prob, emiss_prob):
         backpointer[s, 0] = 0
 
     # Recursion
-    for t in range(1, T):
-        for s in range(N):
+    for t in range(1, T):  # O(T)
+        for s in range(N):  # O(N)
             current_state = states[s]
             max_prob = -1
             best_prev = -1
-            for s_prev in range(N):
+            for s_prev in range(N):  # O(N) -> time complexity O(T * N^2)
                 prev_state = states[s_prev]
                 prob = viterbi[s_prev, t-1] * \
                     trans_prob[prev_state].get(current_state, 1e-10) * \
